@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+:root {
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Modern Light & Warm Cafe Color Palette */
+  --bg-cream: #FAF7F2;
+  --bg-latte-soft: #F4EFEA;
+  --bg-foam: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F5EFE6;
+  --bg-card-hover: #FFFFFF;
+  
+  --espresso-dark: #24140D;
+  --espresso-medium: #3B2418;
+  --espresso-muted: #6B5548;
+  --espresso-subtle: #998376;
+
+  --caramel-primary: #C87019;
+  --caramel-hover: #DF8226;
+  --caramel-deep: #A4550E;
+  --caramel-light: #FDF3E7;
+  --caramel-glow: rgba(200, 112, 25, 0.25);
+
+  --border-warm: rgba(200, 112, 25, 0.2);
+  --border-light: rgba(59, 36, 24, 0.08);
+
+  --accent-green: #059669;
+  --accent-green-bg: #ECFDF5;
+  --accent-gold: #D97706;
+  --accent-gold-bg: #FEF3C7;
+
+  --user-bubble-bg: linear-gradient(135deg, #C87019 0%, #E08528 100%);
+  --user-bubble-text: #FFFFFF;
+  --bot-bubble-bg: #FFFFFF;
+  --bot-bubble-border: rgba(200, 112, 25, 0.22);
+
+  --shadow-sm: 0 2px 8px rgba(59, 36, 24, 0.05);
+  --shadow-md: 0 8px 24px rgba(59, 36, 24, 0.08);
+  --shadow-lg: 0 16px 40px rgba(59, 36, 24, 0.12);
+  --shadow-glow: 0 0 20px var(--caramel-glow);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-cream);
+  color: var(--espresso-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 10% 5%, rgba(200, 112, 25, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgba(223, 130, 38, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, #FAF7F2 0%, #F5EFE6 100%);
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4EFEA;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 112, 25, 0.35);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--caramel-primary);
+}
+
+/* Steam Animation */
+@keyframes steamDrift {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  70% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-16px) scaleX(1.4);
+    opacity: 0;
+  }
+}
+
+.steam-particle {
+  animation: steamDrift 2.4s infinite ease-out;
+}
+
+.steam-particle-2 {
+  animation: steamDrift 2.8s infinite ease-out 0.6s;
+}
+
+.steam-particle-3 {
+  animation: steamDrift 2.2s infinite ease-out 1.2s;
+}
+
+/* Pulsing Badge Indicator */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(5, 150, 105, 0);
+  }
+}
+
+.pulse-open {
+  animation: pulseGlow 2s infinite;
+}
+
+/* Signature Shimmer Effect */
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-badge {
+  background: linear-gradient(90deg, #D97706, #FDE68A, #D97706);
+  background-size: 200% 100%;
+  animation: goldShimmer 3s infinite linear;
+  color: #24140D !important;
+  font-weight: 700;
+}
+
+/* Floating Chat Button Glow */
+@keyframes fabPulse {
+  0%, 100% {
+    box-shadow: 0 6px 22px rgba(200, 112, 25, 0.35);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(200, 112, 25, 0.55);
+    transform: scale(1.03);
+  }
+}
+
+.fab-animated {
+  animation: fabPulse 2.8s infinite ease-in-out;
+}
+
+/* Slide in drawer from right */
+@keyframes slideDrawerIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.drawer-animate-in {
+  animation: slideDrawerIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Message Bubble Entrance Animation */
+@keyframes messageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-message-enter {
+  animation: messageSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Brewing Dots Loader */
+@keyframes brewingBounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.brewing-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--caramel-primary);
+  border-radius: 50%;
+  display: inline-block;
+  animation: brewingBounce 1.4s infinite ease-in-out both;
+}
+
+.brewing-dot:nth-child(1) { animation-delay: -0.32s; }
+.brewing-dot:nth-child(2) { animation-delay: -0.16s; }
+.brewing-dot:nth-child(3) { animation-delay: 0; }
+
+/* Interactive Elements */
+button, input, textarea {
+  font-family: inherit;
+}
+
+button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--caramel-primary);
+  outline-offset: 2px;
+}
